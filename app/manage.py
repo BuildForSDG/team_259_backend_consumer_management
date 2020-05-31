@@ -4,12 +4,12 @@ from models import db
 from configurations import *
 from main import app
 
-app.config.from_object(Production)
+app.config.from_object(Development)
+db.init_app(app)
 
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-
 
 if __name__ == '__main__':
     manager.run()

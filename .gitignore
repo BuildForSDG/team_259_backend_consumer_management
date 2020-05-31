@@ -5,6 +5,7 @@
 /app/__pycache__
 /app/configurations/__pycache__
 /app/user_functions/__pycache__
+/app/migrations
 config.cfg
 config
 /tmp

@@ -5,10 +5,10 @@ from . import db, ma
 class Consumer(db.Model):
     __tablename__ = 'consumers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    name = db.Column(db.String, nullable=False, unique=True)
+    user_id = db.Column(db.Integer, nullable=False)
     # user = db.relationship('User', backref=db.backref("consumers", single_parent=True, lazy=True))
-    is_suspeded = db.Column(db.Boolean, default=False)
+    is_suspended = db.Column(db.Integer, default=0)
     created = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
     updated = db.Column(db.DateTime, onupdate=datetime.utcnow(), nullable=True)
 
@@ -55,7 +55,8 @@ class Consumer(db.Model):
 
     @classmethod
     def delete_by_id(cls, id):
-        record = cls.fetch_by_id(id)
+        # record = cls.fetch_by_id(id)
+        record = cls.query.filter_by(id=id)
         record.delete()
         db.session.commit()
         return True
