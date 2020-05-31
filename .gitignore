@@ -1,0 +1,15 @@
+/__pycache__
+/venv
+/app/resources/__pycache__
+/app/models/__pycache__
+/app/__pycache__
+/app/configurations/__pycache__
+/app/user_functions/__pycache__
+config.cfg
+config
+/tmp
+/.vscode
+/test/resources/__pycache__
+/test/__pycache__
+/test/user_functions/__pycache__
+/.pytest_cache
